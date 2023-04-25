@@ -1,7 +1,16 @@
 .topic-title{
-    font-size: x-large;
+    font-size: 30px;
     /* text-align: left;  */
     
+}
+
+.topic-total-mentions{
+    margin-top: 20px;
+    font-size: x-large;
+}
+
+.sentiment-main-container{
+    margin-top: 20px;
 }
 
 .topic-details-container{
@@ -9,3 +18,26 @@
     width: 45%;
     margin-left: 5%;
 }
+
+.div-positive-sentiment{
+    color: green;
+    margin-left: 10px;
+}
+
+.div-neutral-sentiment{
+    margin-left: 10px;
+}
+
+.div-negative-sentiment{
+    color: red;
+    margin-left: 10px;
+}
+
+.sentiment-container{
+    display: flex;
+}
+
+.label-sentiment, .div-positive-sentiment, .div-negative-sentiment, .div-neutral-sentiment{
+    font-size: larger;
+}
+
