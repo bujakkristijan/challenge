@@ -28,6 +28,18 @@ const ListTopicComponent = () => {
           });
     }  
 
+    const checkSentimentScoreAndSetColor = (topic) =>{
+      if(topic.sentimentScore > 60){
+        return <td style={{color : "green"}} className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td>
+      }
+      else if(topic.sentimentScore < 40){
+        return <td style={{color : "red"}} className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td>
+      }
+      else{
+        return <td style={{color : "grey"}} className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td>
+      }
+    }
+
   return (
     <>
     <div className='main-container'>
@@ -46,7 +58,10 @@ const ListTopicComponent = () => {
                 topic =>
                   // ako stavim viticaste zagrade mora i return !
                   <tr className='table-content-row' key={topic.id}>
-                    <td className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td>
+                    {/* <td className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td> */}
+                    {
+                      checkSentimentScoreAndSetColor(topic)
+                    }
                     <td>
                       <button className='btn btn-success'>Show full details</button>
                    </td>
