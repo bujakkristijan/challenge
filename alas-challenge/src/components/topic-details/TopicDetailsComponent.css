@@ -1,0 +1,11 @@
+.topic-title{
+    font-size: x-large;
+    /* text-align: left;  */
+    
+}
+
+.topic-details-container{
+    /* text-align: center; */
+    width: 45%;
+    margin-left: 5%;
+}

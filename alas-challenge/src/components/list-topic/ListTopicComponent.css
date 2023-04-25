@@ -1,0 +1,10 @@
+.main-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+   
+}
+
+.list-topic-container{
+    width: 55%; /* ovde stavim 55%, a u TopicDetailComponent, topic-details-container 45%, nije radilo dobro kad stavim className direktno na TopicDetailComponent u ovoj komponenti */
+}
