@@ -1,0 +1,18 @@
+.navbar-container{
+    height: 100px;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    align-items: center;
+}
+
+.title{
+    /* width: 500px; */
+    margin: auto;
+    font-size: xx-large;
+    /* text-align: center; */
+}
+
+.nav-bottom-line{
+    height: 2px;
+    background-color: rgb(207, 207, 207);
+}
