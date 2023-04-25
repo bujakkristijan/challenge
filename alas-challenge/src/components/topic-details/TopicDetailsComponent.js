@@ -7,6 +7,7 @@ const TopicDetailsComponent = (props) => {
     // alert(selectedTopic);
   return (
     <div className='topic-details-container'>
+        {(selectedTopic == undefined || selectedTopic == undefined) && <div className='topic-title'>Select topic from table to see results</div>}
         {selectedTopic != undefined && <div className='topic-title'>Information on topic: {selectedTopic.label}</div>}
         {selectedTopic != undefined && <div className='topic-total-mentions'>Total mentions: {selectedTopic.volume}</div>}
         <div className='sentiment-main-container'>
