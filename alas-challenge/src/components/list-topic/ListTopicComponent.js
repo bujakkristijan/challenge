@@ -9,10 +9,10 @@ const ListTopicComponent = () => {
     const [allTopics, setAllTopics] = useState([]);
     const [selectedTopic, setSelectedTopic] = useState(undefined);
 
-    const changedSelectedTopic = (topic) =>{
-      console.log("CHANGEEEE")
-      setSelectedTopic(topic);
-    }
+    // const changedSelectedTopic = (topic) =>{
+    //   console.log("CHANGEEEE")
+    //   setSelectedTopic(topic);
+    // }
 
     useEffect(() => {  
         getAllTopicsFromJSON();
@@ -65,13 +65,13 @@ const ListTopicComponent = () => {
     const checkSentimentScoreAndSetColor = (topic) =>{
       let fontSizeAfterCheck = checkFontSize(topic);
       if(topic.sentimentScore > 60){
-        return <td style={{color : "rgb(0, 255, 0)", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td>
+        return <td style={{color : "rgb(0, 255, 0)", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => setSelectedTopic(topic)}>{topic.label}</td>
       }
       else if(topic.sentimentScore < 40){
-        return <td style={{color : "red", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td>
+        return <td style={{color : "red", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => setSelectedTopic(topic)}>{topic.label}</td>
       }
       else{
-        return <td style={{color : "grey", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td>
+        return <td style={{color : "grey", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => setSelectedTopic(topic)}>{topic.label}</td>
       }
     }
 

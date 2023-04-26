@@ -9,3 +9,7 @@
 .list-topic-container{
     width: 55%; /* ovde stavim 55%, a u TopicDetailComponent, topic-details-container 45%, nije radilo dobro kad stavim className direktno na TopicDetailComponent u ovoj komponenti */
 }
+
+.td-content:hover{
+    cursor: pointer;
+}
