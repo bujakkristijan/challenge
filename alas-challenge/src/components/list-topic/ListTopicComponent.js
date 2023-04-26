@@ -14,6 +14,8 @@ const ListTopicComponent = () => {
 
     const [showModal, setShowModal] = useState(false);
 
+    const [sortedListTopicDaysByDate, setSortedListTopicDaysByDate] = useState([]);
+
     useEffect(() => {  
         getAllTopicsFromJSON();
     }, [])
@@ -79,15 +81,18 @@ const ListTopicComponent = () => {
     }
 
     const handleShowModal = (topic) =>{
-      // setSelectedTopic(topic);
-      setSelectedTopicForModal(topic)
+      //u sustini koristi sada samo za prikazivanje label vrednosti topic-a kada se otvori modal
+      //ne cita se lista iz selectedTopicForModal, vec se salje kao props nova sortirana lista u ModalTopicVolumeByDaysComponent komponenti
+      setSelectedTopicForModal(topic);
+      //setuje state sortirane liste po datumu, koja se salje kao props ModalTopicVolumeByDaysComponent komponenti
+      //probao sam u let varijabli da cuvam listu i da saljem, ali nije radilo iz nekog razloga, pa koristim useState umesto toga
+      setSortedListTopicDaysByDate(sortDate(topic.days));
       setShowModal(true);
-      // console.log("topic " + JSON.stringify(topic));
-      // console.log("selected for modal " + JSON.stringify(selectedTopicForModal));
-
-      // console.log("topic " + JSON.stringify(topic));
-      // console.log("selected topic " + JSON.stringify(selectedTopic));
     }
+
+    const sortDate = (topicDays) => {
+      return topicDays.sort((a, b) => new Date(a.date) - new Date(b.date));
+  }
 
   return (
     <>
@@ -107,7 +112,6 @@ const ListTopicComponent = () => {
                 topic =>
                   // ako stavim viticaste zagrade mora i return !
                   <tr className='table-content-row' key={topic.id}>
-                    {/* <td className='td-content' onClick={() => changedSelectedTopic(topic)}>{topic.label}</td> */}
                     {
                       checkSentimentScoreAndSetColor(topic)
                     }
@@ -132,7 +136,7 @@ const ListTopicComponent = () => {
       </Modal.Header>
 
       <Modal.Body>
-          <ModalTopicVolumeByDaysComponent topic = {selectedTopicForModal}/>
+          <ModalTopicVolumeByDaysComponent days = {sortedListTopicDaysByDate}/>
       </Modal.Body>
 
       <Modal.Footer>
