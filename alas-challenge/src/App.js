@@ -6,14 +6,12 @@ import ListTopicComponent from './components/list-topic/ListTopicComponent';
 function App() {
   return (
     <Router>
-
       <NavbarComponent/>
-      <div className='router-components'>
-        <Routes>
-            <Route path='/' element={<ListTopicComponent></ListTopicComponent>}></Route>
-        </Routes>
-      </div>
-
+        <div className='router-components'>
+          <Routes>
+              <Route path='/' element={<ListTopicComponent></ListTopicComponent>}></Route>
+          </Routes>
+        </div>
     </Router>
 
   );

@@ -3,7 +3,6 @@
     flex-direction: row;
     margin-left: 5%;
     margin-top: 20px;
-   
 }
 
 .list-topic-container{
@@ -13,3 +12,5 @@
 .td-content:hover{
     cursor: pointer;
 }
+
+
