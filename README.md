@@ -8,19 +8,19 @@ How to run application:
 
 How application works:
 
-- When application starts, topics (topic.label value) are loaded from topics.json file and presented in table on the left side
+- When application starts, topics (topic.label value) are loaded from topics.json file and presented in a table on the left side
 - There are 6 different font sizes of topics depending on volume
 - Topic with sentiment score > 60 is displayed in green color
 - Topic with sentiment score < 40 is displayed in red color
 - Other topics are grey
 
-- When topic is not clicked yet, there will be a message that inform user to select topic from the table
+- When a topic is not clicked yet, there will be a message that inform user to select the topic from the table
 - When a topic is clicked, metadata about the topic are displayed (total volume, and how that breaks down into positive,      neutral and negative sentiment) in the component from the right side
 - Positive sentiment value has green and negative has red color
 - If some sentiment property does not exist in topic object, it will have default value 0
 
-- When user clicks on 'Volume by days' button next to topic (topic.label) in table, modal will pop up
-- Modal shows topic search (date and volume) by sorted date (ascending)
+- When the user clicks on 'Volume by days' button next to a topic (topic.label) in the table, modal will pop up
+- Modal shows topic searches (date and volume) sorted by date (ascending)
 - Date values in modal are parsed into "YYYY-MM-DD" format
 
 ### Application UI preview 
