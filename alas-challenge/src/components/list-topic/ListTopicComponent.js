@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import DataService from '../../services/DataService';
 import TopicDetailsComponent from '../topic-details/TopicDetailsComponent';
-import './ListTopicComponent.css'
-// import data from '../../data/topics.json'; // moze i ovako
+import './ListTopicComponent.css';
+import { Modal, Button } from 'react-bootstrap';
+import ModalTopicVolumeByDaysComponent from '../modal-topic-volume-by-days/ModalTopicVolumeByDaysComponent';
+
+// import data from '/topics.json'; // moze i ovako
 
 const ListTopicComponent = () => {
 
     const [allTopics, setAllTopics] = useState([]);
     const [selectedTopic, setSelectedTopic] = useState(undefined);
 
-    // const changedSelectedTopic = (topic) =>{
-    //   console.log("CHANGEEEE")
-    //   setSelectedTopic(topic);
-    // }
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {  
         getAllTopicsFromJSON();
@@ -21,7 +21,6 @@ const ListTopicComponent = () => {
     const getAllTopicsFromJSON = () =>{
         DataService.loadDataFromJSON().then(response =>{
             setAllTopics(response.topics);
-            console.log("RESPONSE DATA " + JSON.stringify(response.topics));
           })
           .catch((error) => {
             console.error("Error getting data", error);
@@ -75,6 +74,17 @@ const ListTopicComponent = () => {
       }
     }
 
+    const handleClose= () => {
+      setShowModal(false);
+  }
+
+  const handleShowModal = (topic) =>{
+    setSelectedTopic(topic);
+    setShowModal(true);
+    console.log("topic " + JSON.stringify(topic));
+    console.log("selected topic " + JSON.stringify(selectedTopic));
+  }
+
   return (
     <>
     <div className='main-container'>
@@ -98,7 +108,7 @@ const ListTopicComponent = () => {
                       checkSentimentScoreAndSetColor(topic)
                     }
                     <td>
-                      <button className='btn btn-success'>Show full details</button>
+                      <button className='btn btn-success' onClick={() => handleShowModal(topic)}>Volume by days</button>
                    </td>
                   </tr>                        
               )
@@ -108,6 +118,24 @@ const ListTopicComponent = () => {
       </div>
       <TopicDetailsComponent topic = {selectedTopic}></TopicDetailsComponent>
     </div>
+
+    {/* prikazivanje volume vrednosti po danima kada se stisne na dugme iz tabele, nakon cega se pojavljuje modal */}
+
+    <Modal size='lg' centered show={showModal} onHide={handleClose}>
+      <Modal.Header closeButton>
+      {/* mora ovako jer selectedTopic bude undefined na pocetku, mada je javljao gresku iako se modal ne prikazuje dok se ne stisne dugme. */}
+      {selectedTopic != undefined && <Modal.Title>Volume by day for topic: {selectedTopic.label}</Modal.Title>}
+      </Modal.Header>
+
+      <Modal.Body>
+          <ModalTopicVolumeByDaysComponent topic = {selectedTopic}/>
+      </Modal.Body>
+
+      <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+
     </>
   )
 }

@@ -1,4 +1,3 @@
-import axios from "axios";
 class DataService{
 
         async loadDataFromJSON(){
@@ -11,8 +10,6 @@ class DataService{
                 console.error(error);
               }
         }
-
-
     }
 
 
