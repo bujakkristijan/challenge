@@ -4,7 +4,7 @@ import './TopicDetailsComponent.css'
 const TopicDetailsComponent = (props) => {
 
     const selectedTopic = props.topic;
-    // alert(selectedTopic);
+    
   return (
     <div className='topic-details-container'>
         {(selectedTopic == undefined || selectedTopic == undefined) && <div className='topic-title'>Select topic from table to see results</div>}

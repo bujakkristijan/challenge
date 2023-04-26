@@ -81,11 +81,11 @@ const ListTopicComponent = () => {
     }
 
     const handleShowModal = (topic) =>{
-      //u sustini koristi sada samo za prikazivanje label vrednosti topic-a kada se otvori modal
-      //ne cita se lista iz selectedTopicForModal, vec se salje kao props nova sortirana lista u ModalTopicVolumeByDaysComponent komponenti
+      //u sustini selectedTopicForModal sada sluzi samo za prikazivanje label vrednosti topic-a kada se otvori modal
+      //ne cita se lista (days) iz selectedTopicForModal, vec se salje kao props nova sortirana lista u ModalTopicVolumeByDaysComponent komponenti
       setSelectedTopicForModal(topic);
-      //setuje state sortirane liste po datumu, koja se salje kao props ModalTopicVolumeByDaysComponent komponenti
-      //probao sam u let varijabli da cuvam listu i da saljem, ali nije radilo iz nekog razloga, pa koristim useState umesto toga
+      //setuje novo stanje (state) sortirane liste po datumu, koja se salje kao props ModalTopicVolumeByDaysComponent komponenti
+      //probao sam u let varijabli da cuvam listu i da saljem, ali nije radilo iz nekog razloga (bila je prazna lista i nakon dodeljivanja nove vrednosti), pa koristim useState umesto toga
       setSortedListTopicDaysByDate(sortDate(topic.days));
       setShowModal(true);
     }
