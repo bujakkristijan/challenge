@@ -5,7 +5,6 @@ const ModalTopicVolumeByDaysComponent = (props) => {
 
     const selectedTopicByDaysList = props.topic.days;
     
-
   return (
     <div className='container'>     
             <table id="table" className='table table-bordered table-hover'>

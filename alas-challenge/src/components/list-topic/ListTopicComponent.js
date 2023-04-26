@@ -4,7 +4,6 @@ import TopicDetailsComponent from '../topic-details/TopicDetailsComponent';
 import './ListTopicComponent.css';
 import { Modal, Button } from 'react-bootstrap';
 import ModalTopicVolumeByDaysComponent from '../modal-topic-volume-by-days/ModalTopicVolumeByDaysComponent';
-
 // import data from '/topics.json'; // moze i ovako
 
 const ListTopicComponent = () => {
@@ -38,8 +37,8 @@ const ListTopicComponent = () => {
     range 4: 87 - 114
     range 5: 115 - 142
     range 6: 143 - 165
-
     */
+
    const checkFontSize = (topic) =>{
       if(topic.volume <= 30){
         return "15px";
@@ -76,14 +75,12 @@ const ListTopicComponent = () => {
 
     const handleClose= () => {
       setShowModal(false);
-  }
+    }
 
-  const handleShowModal = (topic) =>{
-    setSelectedTopic(topic);
-    setShowModal(true);
-    console.log("topic " + JSON.stringify(topic));
-    console.log("selected topic " + JSON.stringify(selectedTopic));
-  }
+    const handleShowModal = (topic) =>{
+      setSelectedTopic(topic);
+      setShowModal(true);
+    }
 
   return (
     <>
@@ -135,7 +132,6 @@ const ListTopicComponent = () => {
           <Button variant="secondary" onClick={handleClose}>Close</Button>
       </Modal.Footer>
     </Modal>
-
     </>
   )
 }
