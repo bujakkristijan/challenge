@@ -10,6 +10,7 @@ const ListTopicComponent = () => {
 
     const [allTopics, setAllTopics] = useState([]);
     const [selectedTopic, setSelectedTopic] = useState(undefined);
+    const [selectedTopicForModal, setSelectedTopicForModal] = useState(undefined);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -78,8 +79,14 @@ const ListTopicComponent = () => {
     }
 
     const handleShowModal = (topic) =>{
-      setSelectedTopic(topic);
+      // setSelectedTopic(topic);
+      setSelectedTopicForModal(topic)
       setShowModal(true);
+      // console.log("topic " + JSON.stringify(topic));
+      // console.log("selected for modal " + JSON.stringify(selectedTopicForModal));
+
+      // console.log("topic " + JSON.stringify(topic));
+      // console.log("selected topic " + JSON.stringify(selectedTopic));
     }
 
   return (
@@ -120,12 +127,12 @@ const ListTopicComponent = () => {
 
     <Modal size='lg' centered show={showModal} onHide={handleClose}>
       <Modal.Header closeButton>
-      {/* mora ovako jer selectedTopic bude undefined na pocetku, mada je javljao gresku iako se modal ne prikazuje dok se ne stisne dugme. */}
-      {selectedTopic != undefined && <Modal.Title>Volume by day for topic: {selectedTopic.label}</Modal.Title>}
+      {/* mora ovako jer selectedTopicForModal bude undefined na pocetku, mada je javljao gresku iako se modal ne prikazuje dok se ne stisne dugme. */}
+      {selectedTopicForModal != undefined && <Modal.Title>Volume by day for topic: {selectedTopicForModal.label}</Modal.Title>}
       </Modal.Header>
 
       <Modal.Body>
-          <ModalTopicVolumeByDaysComponent topic = {selectedTopic}/>
+          <ModalTopicVolumeByDaysComponent topic = {selectedTopicForModal}/>
       </Modal.Body>
 
       <Modal.Footer>
