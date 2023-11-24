@@ -66,7 +66,7 @@ const ListTopicComponent = () => {
     const checkSentimentScoreAndSetColor = (topic) =>{
       let fontSizeAfterCheck = checkFontSize(topic);
       if(topic.sentimentScore > 60){
-        return <td style={{color : "rgb(0, 255, 0)", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => setSelectedTopic(topic)}>{topic.label}</td>
+        return <td style={{color : "rgb(0, 198, 0)", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => setSelectedTopic(topic)}>{topic.label}</td>
       }
       else if(topic.sentimentScore < 40){
         return <td style={{color : "red", fontSize: fontSizeAfterCheck }} className='td-content' onClick={() => setSelectedTopic(topic)}>{topic.label}</td>
